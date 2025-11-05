@@ -1,1 +1,5 @@
-<h1>Einstellungen</h1>
+<script>
+	import Topbar from '$lib/components/Topbar.svelte';
+</script>
+
+<Topbar icon="gear" label="Einstellungen" />
