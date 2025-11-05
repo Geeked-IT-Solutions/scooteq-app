@@ -1,6 +1,17 @@
 @import 'tailwindcss';
 @import 'bootstrap-icons';
 
+:root {
+	--color-text: #333333;
+	--color-heading: #121212;
+	--color-background: #f5f5f5;
+	--color-background-alt: #ffffff;
+	--color-primary: #1b3855;
+	--color-secondary: #f4b300;
+	--color-box: #eeeeee;
+	--color-border: #dddddd;
+}
+
 * {
 	-webkit-user-select: none;
 	-moz-user-select: none;

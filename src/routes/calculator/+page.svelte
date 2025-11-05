@@ -2,5 +2,6 @@
 	import Topbar from '$lib/components/Topbar.svelte';
 </script>
 
-<Topbar />
-<p>Noch nichts zu mieten</p>
+<Topbar label="Preisrechner" />
+
+<p>Noch nichts zu berechnen</p>
