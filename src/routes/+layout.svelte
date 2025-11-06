@@ -5,7 +5,7 @@
 	let { children } = $props();
 </script>
 
-<div class="pt-12 pb-18">
+<div class="pt-12 pb-20">
 	{@render children()}
 </div>
 <Navbar />
