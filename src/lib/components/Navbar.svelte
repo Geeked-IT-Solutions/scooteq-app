@@ -14,7 +14,7 @@
 </script>
 
 <nav
-	class="fixed inset-x-0 bottom-0 z-999 flex h-20 items-center justify-center border-t border-(--color-border) bg-(--color-box)/80 px-4 backdrop-blur-md"
+	class="fixed inset-x-0 bottom-0 z-999 flex h-20 items-center justify-center border-t border-(--color-border) bg-(--color-box)/70 px-4 backdrop-blur-md"
 >
 	{#each navbarItems as item}
 		<div
