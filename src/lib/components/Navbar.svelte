@@ -11,11 +11,6 @@
 
 	const activeSegment = $derived('/' + page.url.pathname.split('/')[1]);
 	const handleNavigate = (url: string | URL) => goto(url);
-
-	$effect(() => {
-		// Close any open modals when navigating
-		console.log(activeSegment);
-	});
 </script>
 
 <nav
