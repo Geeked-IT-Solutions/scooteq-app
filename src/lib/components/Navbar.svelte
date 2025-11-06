@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import Icon from './Icon.svelte';
 
 	const navbarItems = [
@@ -7,6 +8,14 @@
 		{ key: 'calculator', label: 'Preisrechner', url: '/calculator' },
 		{ key: 'gear', label: 'Einstellungen', url: '/settings' }
 	];
+
+	const activeSegment = $derived('/' + page.url.pathname.split('/')[1]);
+	const handleNavigate = (url: string | URL) => goto(url);
+
+	$effect(() => {
+		// Close any open modals when navigating
+		console.log(activeSegment);
+	});
 </script>
 
 <nav
@@ -14,10 +23,12 @@
 >
 	{#each navbarItems as item}
 		<div
-			class="mx-2 flex w-20 cursor-pointer flex-col items-center justify-center text-2xl"
+			class="mx-2 flex h-full w-20 cursor-pointer flex-col items-center justify-center text-2xl"
+			class:text-(--color-primary)={item.url === activeSegment}
+			class:font-semibold={item.url === activeSegment}
 			role="none"
 			onclick={() => {
-				goto(item.url);
+				handleNavigate(item.url);
 			}}
 		>
 			<Icon key={item.key} />
