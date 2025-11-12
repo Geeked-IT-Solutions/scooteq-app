@@ -19,7 +19,7 @@
 
 		if (accuracy !== undefined) {
 			if (!accuracyCircle) {
-				accuracyCircle = L!.circle(latlng, { radius: accuracy });
+				accuracyCircle = L!.circle(latlng, { radius: accuracy, fillOpacity: 0.8 });
 				accuracyCircle.addTo(map);
 			} else {
 				accuracyCircle.setLatLng(latlng);
