@@ -9,6 +9,7 @@
 	let follow = true;
 	let minZoom = 14;
 	let maxZoom = 18;
+	let initialZoom = 16;
 
 	let map: any;
 	let accuracyCircle: any;
@@ -36,7 +37,7 @@
 		if (typeof window === 'undefined') return;
 		L = await import('leaflet');
 
-		map = L!.map(mapEl, { zoomControl: false }).setView([0, 0], maxZoom);
+		map = L!.map(mapEl, { zoomControl: false }).setView([0, 0], initialZoom);
 
 		L!
 			.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -49,7 +50,7 @@
 		navigator.geolocation.getCurrentPosition(
 			(pos) => {
 				const { latitude, longitude, accuracy } = pos.coords;
-				map.setView([latitude, longitude], maxZoom);
+				map.setView([latitude, longitude], initialZoom);
 				setPosition(latitude, longitude, accuracy);
 			},
 			(err) => {
