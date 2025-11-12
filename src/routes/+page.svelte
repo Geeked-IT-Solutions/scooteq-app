@@ -9,7 +9,7 @@
 	let follow = true;
 	let minZoom = 14;
 	let maxZoom = 18;
-	let initialZoom = 16;
+	let initialZoom = 17;
 
 	let map: any;
 	let accuracyCircle: any;
