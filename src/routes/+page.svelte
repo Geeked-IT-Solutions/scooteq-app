@@ -9,7 +9,7 @@
 	let follow = true;
 	let minZoom = 14;
 	let maxZoom = 18;
-	let initialZoom = 17;
+	let initialZoom = 16;
 
 	let map: any;
 	let accuracyCircle: any;
@@ -79,7 +79,12 @@
 
 <Topbar />
 
-<div bind:this={mapEl} id="map" class="h-screen w-full"></div>
+<div
+	bind:this={mapEl}
+	id="map"
+	class="fixed z-0 h-screen w-full
+"
+></div>
 <ScooterDashboard />
 
 <!--

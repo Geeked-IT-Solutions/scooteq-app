@@ -46,4 +46,10 @@
 		<span>{price}</span>
 		<button>Beenden</button>
 	</div>
+{:else}
+	<div
+		class="fixed right-2 bottom-22 z-999 flex items-center justify-between rounded-2xl bg-(--color-primary) p-4 text-(--color-background) shadow-lg"
+	>
+		Reservieren
+	</div>
 {/if}
