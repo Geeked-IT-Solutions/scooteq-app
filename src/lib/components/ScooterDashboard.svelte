@@ -85,7 +85,7 @@
 	</div>
 {:else}
 	<div
-		class="fixed right-2 bottom-22 z-999 flex cursor-pointer items-center justify-between rounded-2xl bg-(--color-primary) p-4 text-(--color-background) shadow-lg"
+		class="fixed right-2 bottom-24 z-999 flex cursor-pointer items-center justify-between rounded-2xl bg-(--color-primary) p-4 text-(--color-background) shadow-lg"
 		role="none"
 		onclick={() => {
 			reservationDialogOpen = true;
