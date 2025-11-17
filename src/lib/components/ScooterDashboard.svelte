@@ -125,7 +125,7 @@
 				}}
 			></button>
 		</div>
-		<span class="w-full text-left text-sm">1€ Entsperrgebühr, danach 0,23 €/min</span>
+		<span class="w-full text-left text-sm">1€ Entsperrgebühr + 0,23 €/min</span>
 	</div>
 {/if}
 
