@@ -82,7 +82,7 @@
 <div
 	bind:this={mapEl}
 	id="map"
-	class="fixed z-0 h-screen w-full
+	class="fixed inset-0 z-0
 "
 ></div>
 <ScooterDashboard />
