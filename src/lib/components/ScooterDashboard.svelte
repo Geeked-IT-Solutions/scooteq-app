@@ -10,6 +10,10 @@
 	let reservationDialogOpen: boolean = $state(false);
 	let activationCode: string = $state('');
 
+	let endReservationDialogOpen: boolean = $state(false);
+	let finalPrice: string | null = $state('');
+	let finalElapsedTime: string | null = $state('');
+
 	const scooterActivationCodes = scooters.map((scooter) => scooter.activationCode);
 
 	function loadReservationData() {
@@ -52,6 +56,10 @@
 		}
 	}, 1000);
 
+	$effect(() => {
+		activationCode = activationCode.trim().toUpperCase();
+	});
+
 	if (browser) loadReservationData();
 </script>
 
@@ -64,6 +72,9 @@
 		<button
 			class="cursor-pointer rounded-md bg-red-500 p-2 text-white"
 			onclick={() => {
+				endReservationDialogOpen = true;
+				finalPrice = price;
+				finalElapsedTime = formatTime(elapsedTime);
 				localStorage.clear();
 				name = '';
 				reservationTimestamp = '';
@@ -86,30 +97,49 @@
 
 {#if reservationDialogOpen}
 	<div
-		class="fixed inset-0 z-1000 flex items-center justify-center gap-2 bg-black/80 px-4 text-lg"
+		class="fixed inset-0 z-1000 flex flex-col items-center justify-center gap-1 bg-black/80 px-4 text-lg text-(--color-background)"
 		onclick={() => {
 			activationCode = '';
 			reservationDialogOpen = false;
 		}}
 		role="none"
 	>
-		<input
-			type="text"
-			class="w-full border-b border-(--color-background) text-(--color-background)"
-			placeholder="Reservierungscode"
-			bind:value={activationCode}
-			onclick={(e) => e.stopPropagation()}
-			onkeydown={(e) => {
-				if (e.key === 'Enter') reserveScooter();
-			}}
-		/>
-		<button
-			class="bi bi-arrow-right cursor-pointer rounded-md bg-(--color-secondary) p-2 text-(--color-background)"
-			aria-label="Reservieren"
-			onclick={(e) => {
-				e.stopPropagation();
-				reserveScooter();
-			}}
-		></button>
+		<span class="bi bi-x fixed top-4 right-4 z-1000 cursor-pointer text-3xl"></span>
+		<div class="flex w-full items-center gap-4">
+			<input
+				type="text"
+				class="w-full border-b border-(--color-background)"
+				placeholder="Reservierungscode"
+				bind:value={activationCode}
+				onclick={(e) => e.stopPropagation()}
+				onkeydown={(e) => {
+					if (e.key === 'Enter') reserveScooter();
+				}}
+			/>
+			<button
+				class="bi bi-arrow-right cursor-pointer rounded-md bg-(--color-secondary) px-4 py-2"
+				aria-label="Reservieren"
+				onclick={(e) => {
+					e.stopPropagation();
+					reserveScooter();
+				}}
+			></button>
+		</div>
+		<span class="w-full text-left text-sm">1€ Entsperrgebühr, danach 0,23 €/min</span>
+	</div>
+{/if}
+
+{#if endReservationDialogOpen}
+	<div
+		class="fixed inset-0 z-1000 flex flex-col items-center justify-center gap-2 bg-black/80 px-4 text-lg text-(--color-background)"
+		onclick={() => {
+			endReservationDialogOpen = false;
+		}}
+		role="none"
+	>
+		<span class="bi bi-x fixed top-4 right-4 z-1000 cursor-pointer text-3xl"></span>
+		<span class="font-bold">Fahrt abgeschlossen</span>
+		<span>Fahrtdauer: <span class="font-bold">{finalElapsedTime}</span></span>
+		<span>Fahrtkosten: <span class="font-bold">{finalPrice}</span></span>
 	</div>
 {/if}

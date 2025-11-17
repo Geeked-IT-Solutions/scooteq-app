@@ -3,10 +3,10 @@ import type { Scooter } from './types';
 export const scooters: Scooter[] = [
 	{
 		name: 'Scooter 1',
-		activationCode: 'SCT001'
+		activationCode: 'SCT-001'
 	},
 	{
 		name: 'Scooter 2',
-		activationCode: 'SCT002'
+		activationCode: 'SCT-002'
 	}
 ];
