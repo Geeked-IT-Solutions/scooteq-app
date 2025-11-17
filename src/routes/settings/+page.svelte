@@ -7,7 +7,7 @@
 		if (browser) {
 			localStorage.clear();
 			localStorage.setItem('scooterName', 'TEST');
-			localStorage.setItem('reservationTimestamp', Date.now().toString());
+			localStorage.setItem('reservationTimestamp', (Date.now() - 4.25 * 60 * 1000).toString());
 		}
 	}
 </script>

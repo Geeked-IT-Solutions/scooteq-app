@@ -65,7 +65,7 @@
 
 {#if name}
 	<div
-		class="fixed inset-x-0 bottom-22 z-999 mx-2 flex items-center justify-between rounded-2xl border border-(--color-border) bg-white p-2 pl-4"
+		class="fixed inset-x-0 bottom-24 z-999 mx-2 flex items-center justify-between rounded-2xl border border-(--color-border) bg-white p-2 pl-4"
 	>
 		<span class="font-bold">{name}</span>
 		<span>{formatTime(elapsedTime)}</span>
