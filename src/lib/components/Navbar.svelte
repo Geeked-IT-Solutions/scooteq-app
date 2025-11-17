@@ -18,7 +18,7 @@
 >
 	{#each navbarItems as item}
 		<div
-			class="mx-2 flex h-full w-20 cursor-pointer flex-col items-center justify-center text-2xl"
+			class="mx-2 mb-4 flex h-full w-20 cursor-pointer flex-col items-center justify-center text-2xl"
 			class:text-(--color-primary)={item.url === activeSegment}
 			class:font-semibold={item.url === activeSegment}
 			role="none"
