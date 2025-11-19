@@ -1,14 +1,15 @@
 <script lang="ts">
 	import Topbar from '$lib/components/Topbar.svelte';
 
-	let time: number = $state(5);
+	let distance: number | null = $state(null);
 	let price: string = $state('');
 
 	$effect(() => {
-		if (time < 0) {
-			time = 0;
+		if (distance === null) return;
+		if (distance < 0) {
+			distance = 0;
 		} else {
-			price = (1 + time * 0.23).toLocaleString('de-DE', {
+			price = (1 + 4 * distance * 0.23).toLocaleString('de-DE', {
 				style: 'currency',
 				currency: 'EUR'
 			});
@@ -18,22 +19,21 @@
 
 <Topbar label="Preisrechner" />
 
-<!--Zeiteingabe in minuten und preis berechnen knopf-->
 <div class="fixed inset-0 z-0 flex flex-col items-center justify-center gap-4 p-4">
 	<input
 		type="number"
-		bind:value={time}
-		placeholder="Zeit in Minuten"
+		bind:value={distance}
+		placeholder="Strecke in km"
 		class="w-full rounded-md border border-(--color-border) p-2"
 	/>
 
-	<span class="text-sm text-(--color-text)">1€ Entsperrgebühr + 0,23 €/min</span>
+	<span class="text-sm text-(--color-text)"
+		>1 € Entsperrgebühr + 0,23 €/min bei durchschnittlich 15 km/h</span
+	>
 
-	{#if time > 0}
+	{#if distance && distance > 0}
 		<span class="font-bold text-(--color-text)">{price}</span>
 	{:else}
-		<span class="w-full text-center text-(--color-text)"
-			>Geben Sie die geschätzte Fahrtdauer an.</span
-		>
+		<span class="w-full text-center text-(--color-text)">Geben Sie die Strecke in km an.</span>
 	{/if}
 </div>
